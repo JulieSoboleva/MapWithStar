@@ -1,5 +1,5 @@
 export default class Settings {
-    constructor({theme = null, music = null, difficulty = null}) {
+    constructor({ theme = null, music = null, difficulty = null }) {
         this.preferences = new Map();
         this.preferences.set('theme', 'dark');
         this.preferences.set('music', 'trance');
@@ -18,9 +18,6 @@ export default class Settings {
     }
 
     settings() {
-        this.userPreferences.forEach((value, key) => {
-            this.preferences.set(key, value);
-        });
-        return this.preferences;
+        return new Map([...this.preferences, ...this.userPreferences]);
     }
 }
